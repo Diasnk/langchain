@@ -13,9 +13,7 @@ import { formatDocumentsAsString } from 'langchain/util/document';
 import { CharacterTextSplitter } from 'langchain/text_splitter';
 
 const loader = new JSONLoader(
-    "src/data/states.json",
-    ["/state", "/code", "/nickname", "/website", "/admission_date", "/admission_number", "/capital_city", "/capital_url", "/population", "/population_rank", "/constitution_url", "/twitter_url"],
-);
+    "src/data/fiftyEssays.json",[],);
 
 export const dynamic = 'force-dynamic'
 
@@ -27,7 +25,7 @@ const formatMessage = (message: VercelChatMessage) => {
     return `${message.role}: ${message.content}`;
 };
 
-const TEMPLATE = `Answer the user's questions based only on the following context. If the answer is not in the context, reply politely that you do not have that information available.:
+const TEMPLATE = `You are a professional college essay writer who helps students apply to United States colleges. Ask for user's essay first and give a feedback based on the following context. Answer user's questions based on the following context. Give an extended answer. You have an access to a successful college essays database and can assist according to them. If the answer is not in the context, reply politely that you do not have that information available.:
 ==============================
 Context: {context}
 ==============================
@@ -70,7 +68,7 @@ export async function POST(req: Request) {
 
         const model = new ChatOpenAI({
             apiKey: process.env.OPENAI_API_KEY!,
-            model: 'gpt-3.5-turbo',
+            model: 'gpt-4o',
             temperature: 0,
             streaming: true,
             verbose: true,

@@ -25,9 +25,9 @@ export function Chat() {
     return (
         <main className="flex flex-col w-full h-screen max-h-dvh bg-background">
 
-            <header className="p-4 border-b w-full max-w-3xl mx-auto">
-                <h1 className="text-2xl font-bold">LangChain Chat</h1>
-            </header>
+            <div className="p-4 border-b w-full max-w-3xl mx-auto">
+                <h1 className="text-2xl font-bold">Essay Writer Chat</h1>
+            </div>
 
             <section className="p-4">
                 <form onSubmit={handleSubmit} className="flex w-full max-w-3xl mx-auto items-center">
