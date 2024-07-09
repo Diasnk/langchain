@@ -3,6 +3,7 @@ import {
     StreamingTextResponse,
     createStreamDataTransformer
 } from 'ai';
+
 import { ChatOpenAI } from '@langchain/openai';
 import { PromptTemplate } from '@langchain/core/prompts';
 import { HttpResponseOutputParser } from 'langchain/output_parsers';
@@ -37,6 +38,8 @@ assistant:`;
 
 export async function POST(req: Request) {
     try {
+
+
         // Extract the `messages` from the body of the request
         const { messages } = await req.json();
 
@@ -45,24 +48,6 @@ export async function POST(req: Request) {
         const currentMessageContent = messages[messages.length - 1].content;
 
         const docs = await loader.load();
-
-        // load a JSON object
-        // const textSplitter = new CharacterTextSplitter();
-        // const docs = await textSplitter.createDocuments([JSON.stringify({
-        //     "state": "Kansas",
-        //     "slug": "kansas",
-        //     "code": "KS",
-        //     "nickname": "Sunflower State",
-        //     "website": "https://www.kansas.gov",
-        //     "admission_date": "1861-01-29",
-        //     "admission_number": 34,
-        //     "capital_city": "Topeka",
-        //     "capital_url": "http://www.topeka.org",
-        //     "population": 2893957,
-        //     "population_rank": 34,
-        //     "constitution_url": "https://kslib.info/405/Kansas-Constitution",
-        //     "twitter_url": "http://www.twitter.com/ksgovernment",
-        // })]);
 
         const prompt = PromptTemplate.fromTemplate(TEMPLATE);
 
