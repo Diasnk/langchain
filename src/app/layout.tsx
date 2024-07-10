@@ -1,14 +1,20 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Montserrat } from "next/font/google";
+import { Exo_2 } from "next/font/google";
 import "./globals.css";
 import Header from "./components/header";
 import Footer from "./components/footer";
 
-const montserrat = Montserrat({
+// const montserrat = Montserrat({
+//   subsets: ["latin", "cyrillic"],
+//   display: "swap",
+// });
+
+const exo = Exo_2({
   subsets: ["latin", "cyrillic"],
-  display: "swap",
-});
+  display: "swap"
+})
 
 export const metadata: Metadata = {
   title: "Essay Writer",
@@ -22,7 +28,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={montserrat.className}>
+      <body className={exo.className}>
         <Header/>
         {children}
         <Footer/>
