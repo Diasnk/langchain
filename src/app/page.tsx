@@ -30,14 +30,12 @@ export default function Landing() {
 
                   {/* <button className="w-24 h-10 rounded-xl border">Message</button> */}
               </div>
-              <div className="px-20 content">
+              
+          </div>
+            <div className="px-20 bg-black ">
                 <Graph/>
 
-              </div>
-              <div>
-                Hello
-              </div>
-          </div>
+            </div>
       </div>
     )
   }

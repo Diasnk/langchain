@@ -31,7 +31,10 @@ export default function RootLayout({
       <body className={exo.className}>
         <Header/>
         {children}
-        <Footer/>
+        <div>
+          <Footer/>
+        </div>
+        
       </body>
     </html>
   );
