@@ -1,6 +1,7 @@
 'use client'
 
 import { useRouter } from "next/navigation"
+import { Graph } from "./components/graph"
 
 
 export default function Landing() {
@@ -26,7 +27,15 @@ export default function Landing() {
                                 Message
                             </span>
                     </button>
+
                   {/* <button className="w-24 h-10 rounded-xl border">Message</button> */}
+              </div>
+              <div className="px-20 content">
+                <Graph/>
+
+              </div>
+              <div>
+                Hello
               </div>
           </div>
       </div>

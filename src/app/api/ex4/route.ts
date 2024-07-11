@@ -26,7 +26,7 @@ const formatMessage = (message: VercelChatMessage) => {
     return `${message.role}: ${message.content}`;
 };
 
-const TEMPLATE = `You are a professional college essay writer who helps students apply to United States colleges. Ask for user's essay first and give a feedback based on the following context. Answer user's questions based on the following context. Give an extended answer. You have an access to a successful college essays database and can assist according to them. If the answer is not in the context, reply politely that you do not have that information available.:
+const PROMPT = `You are a professional college essay writer who helps students apply to United States colleges. Ask for user's essay first and give a feedback based on the following context. Answer user's questions based on the following context. Give an extended answer. You have an access to a successful college essays database and can assist according to them. If the answer is not in the context, reply politely that you do not have that information available.:
 ==============================
 Context: {context}
 ==============================
@@ -49,12 +49,12 @@ export async function POST(req: Request) {
 
         const docs = await loader.load();
 
-        const prompt = PromptTemplate.fromTemplate(TEMPLATE);
+        const prompt = PromptTemplate.fromTemplate(PROMPT);
 
         const model = new ChatOpenAI({
             apiKey: process.env.OPENAI_API_KEY!,
             model: 'gpt-4o',
-            temperature: 0,
+            temperature: 0.3,
             streaming: true,
             verbose: true,
         });
@@ -81,11 +81,16 @@ export async function POST(req: Request) {
             chat_history: formattedPreviousMessages.join('\n'),
             question: currentMessageContent,
         });
+        
 
         // Respond with the stream
-        return new StreamingTextResponse(
+        const a = new StreamingTextResponse(
             stream.pipeThrough(createStreamDataTransformer()),
+            
         );
+
+        return a
+        
     } catch (e: any) {
         return Response.json({ error: e.message }, { status: e.status ?? 500 });
     }

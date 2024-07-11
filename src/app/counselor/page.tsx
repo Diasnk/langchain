@@ -4,7 +4,7 @@ export const runtime = 'edge';
 
 export default function Counelor() {
   return(
-    <div className="mt-14">
+    <div className="">
       <Chat/>
     </div>
   )

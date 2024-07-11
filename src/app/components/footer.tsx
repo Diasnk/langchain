@@ -1,6 +1,6 @@
 export default function Footer(){
     return(
-        <div className="bg-slate text-white text-center py-8">
+        <div className="bg-black text-white text-center py-8">
             <div className="container mx-auto px-4">
                 <p className="text-lg">&copy; 2024 AI Counselor. All rights reserved.</p>
                     <nav className="mt-4">
