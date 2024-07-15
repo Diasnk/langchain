@@ -14,7 +14,7 @@ import { formatDocumentsAsString } from 'langchain/util/document';
 import { CharacterTextSplitter } from 'langchain/text_splitter';
 
 const loader = new JSONLoader(
-    "src/d2/fiftyEssays.json", [],);
+    "src/data/fiftyEssays.json", [],);
 
 export const dynamic = 'force-dynamic'
 
