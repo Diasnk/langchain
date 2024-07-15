@@ -14,7 +14,7 @@ import { formatDocumentsAsString } from 'langchain/util/document';
 import { CharacterTextSplitter } from 'langchain/text_splitter';
 
 const loader = new JSONLoader(
-    "src/d2/fiftyEssays.json",[],);
+    "src/d2/fiftyEssays.json", [],);
 
 export const dynamic = 'force-dynamic'
 
@@ -26,7 +26,7 @@ const formatMessage = (message: VercelChatMessage) => {
     return `${message.role}: ${message.content}`;
 };
 
-const PROMPT = `You are a professional college essay writer who helps students apply to United States colleges. Ask for user's essay first and give a feedback based on the following context. Answer user's questions based on the following context. Give an extended answer. You have an access to a successful college essays database and can assist according to them. If the answer is not in the context, reply politely that you do not have that information available.:
+const PROMPT = `You are a professional college essay writer who helps students apply to United States colleges. Ask for user's essay first and give a feedback based on the following context. Answer user's questions based on the following context. Give an extended answer. You have access to a successful college essays database and can assist according to them. If the answer is not in the context, reply politely that you do not have that information available.:
 ==============================
 Context: {context}
 ==============================
@@ -38,7 +38,8 @@ assistant:`;
 
 export async function POST(req: Request) {
     try {
-
+        // Log the API key to ensure it's being accessed correctly
+        console.log('OpenAI API Key:', process.env.OPENAI_API_KEY);
 
         // Extract the `messages` from the body of the request
         const { messages } = await req.json();
@@ -60,9 +61,9 @@ export async function POST(req: Request) {
         });
 
         /**
-       * Chat models stream message chunks rather than bytes, so this
-       * output parser handles serialization and encoding.
-       */
+         * Chat models stream message chunks rather than bytes, so this
+         * output parser handles serialization and encoding.
+         */
         const parser = new HttpResponseOutputParser();
 
         const chain = RunnableSequence.from([
@@ -81,17 +82,14 @@ export async function POST(req: Request) {
             chat_history: formattedPreviousMessages.join('\n'),
             question: currentMessageContent,
         });
-        
 
         // Respond with the stream
-        const a = new StreamingTextResponse(
+        return new StreamingTextResponse(
             stream.pipeThrough(createStreamDataTransformer()),
-            
         );
 
-        return a
-        
     } catch (e: any) {
-        return Response.json({ error: e.message }, { status: e.status ?? 500 });
+        console.error('Error processing request:', e);
+        return new Response(JSON.stringify({ error: e.message }), { status: e.status ?? 500 });
     }
 }

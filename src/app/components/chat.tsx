@@ -22,18 +22,20 @@ export function Chat() {
     let mess
     let out:any
 
-    messages.map((m, index)=>{
-        m.role == 'assistant' ? (
-            mess = m.content,
-            // console.log(JSON.stringify(mess))
-            // mess = JSON.parse(m.content),
-            console.log(mess)
-        )
-        :
-        (
-            console.log('')
-        )
-    })
+    // messages.map((m, index)=>{
+    //     m.role == 'assistant' ? (
+    //         mess = m.content,
+    //         // console.log(JSON.stringify(mess))
+    //         // mess = JSON.parse(m.content),
+    //         console.log(mess)
+    //     )
+    //     :
+    //     (
+    //         console.log('')
+    //     )
+    // })
+
+    console.log('OpenAI API Key:', process.env.OPENAI_API_KEY);
     
     const chatParent = useRef<HTMLUListElement>(null)
 
