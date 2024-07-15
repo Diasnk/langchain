@@ -14,7 +14,7 @@ export default function Header() {
 				<Link href="./counselor" className="flex items-center font-semibold hover:underline transition-all">
 					Counselor
 				</Link>
-				<Link href="./countries" className="flex items-center font-semibold hover:underline transition-all">
+				<Link href="./" className="flex items-center font-semibold hover:underline transition-all">
 					Sign In/Log In
 				</Link>
 			</div>
