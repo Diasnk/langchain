@@ -90,6 +90,7 @@ export async function POST(req: Request) {
 
     } catch (e: any) {
         console.error('Error processing request:', e);
+        console.log(e.message)
         return new Response(JSON.stringify({ error: e.message }), { status: e.status ?? 500 });
     }
 }
