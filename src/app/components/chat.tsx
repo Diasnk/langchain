@@ -24,10 +24,10 @@ export function Chat() {
 
     messages.map((m, index)=>{
         m.role == 'assistant' ? (
-            mess = m.content
+            mess = m.content,
             // console.log(JSON.stringify(mess))
             // mess = JSON.parse(m.content),
-            // console.log(mess)
+            console.log(mess)
         )
         :
         (

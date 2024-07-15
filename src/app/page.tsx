@@ -9,7 +9,7 @@ export default function Landing() {
     return(
       <div className="bg-black text-white">
             <div className="w-full h-screen grid grid-cols-1">
-                <div className="rounded-full z-10 top-1/3 left-1/2 bg-[#96a7bb] w-80 blur-3xl h-56 absolute -translate-x-1/2 -translate-y-full"></div>
+                <div className="rounded-full z-10 top-2/5 left-1/2 bg-[#96a7bb] w-96 blur-3xl h-56 absolute -translate-x-1/2 -translate-y-full"></div>
               
                 <div className="justify-self-center text-[#96a7bb] text-center self-center pt-20">
                     <h1 className="font-bold text-5xl">Unlock Your Full Writing Potential With</h1>
