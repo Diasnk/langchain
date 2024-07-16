@@ -24,12 +24,12 @@ const Feedback = () => {
   return (
     <div>
         <div className="max-w-4xl px-4 mx-auto">
-            <h1 className="text-center mt-10 font-bold text-3xl">
-                Analyze your note!
+            <h1 className="text-start mt-10 font-bold text-3xl text-white-1 py-3">
+                Send Your Whole Essay!
             </h1>
-            <form onSubmit={handleSubmit} className="flex w-full max-w-3xl mx-auto items-center">
+            <form onSubmit={handleSubmit} className="flex w-full max-w-3xl mt-2 mx-auto items-center">
                 <textarea
-                    className="mt-2 w-full p-2 border-2 rounded-md border-black overflow-y-scroll h-11 max-h-40"
+                    className=" w-full p-2 border-2 rounded-md border-black overflow-y-scroll h-10 max-h-40"
                     placeholder={"Enter your note here"}
                     value={input}
                     onChange={handleInputChange}
@@ -39,9 +39,15 @@ const Feedback = () => {
                 </Button>
             </form>
                 <ul ref={chatParent} className="mt-6 w-full grid min-h-screen grid-cols-2 gap-4">
+                    <div className="text-white-3 font-semibold justify-self-center text-xl">
+                        Your Essay
+                    </div>
+                    <div className="text-white-3 font-semibold justify-self-center text-xl">
+                        Feedback
+                    </div>
                     {messages.map(({ content, id, role }) => (
                         role === 'user' ? (
-                            <div key={id} className="h-min mb-2 p-4  bg-gray-100 rounded">
+                            <div key={id} className="h-min mb-2 p-4 bg-black-4 text-white-1 rounded">
                                 {content}
                             </div>
                         ):(
