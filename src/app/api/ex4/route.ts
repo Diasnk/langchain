@@ -36,6 +36,7 @@ user: {question}
 assistant:`;
 
 
+
 export async function POST(req: Request) {
     try {
         // Log the API key to ensure it's being accessed correctly

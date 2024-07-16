@@ -6,15 +6,15 @@ import "./globals.css";
 import Header from "./components/header";
 import Footer from "./components/footer";
 
-// const montserrat = Montserrat({
-//   subsets: ["latin", "cyrillic"],
-//   display: "swap",
-// });
-
-const exo = Exo_2({
+const montserrat = Montserrat({
   subsets: ["latin", "cyrillic"],
-  display: "swap"
-})
+  display: "swap",
+});
+
+// const exo = Exo_2({
+//   subsets: ["latin", "cyrillic"],
+//   display: "swap"
+// })
 
 export const metadata: Metadata = {
   title: "Essay Writer",
@@ -28,7 +28,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={exo.className}>
+      <body className={montserrat.className}>
         {children}
         <div>
           <Footer/>
