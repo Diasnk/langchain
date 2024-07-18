@@ -4,7 +4,7 @@ import { BiSolidGroup } from 'react-icons/bi'
 
 export default function Header() {
 	return (
-		<div className="text-[#96a7bb] bg-black lg:px-10 px-4 py-5 flex justify-between items-center">
+		<div className="text-[#96a7bb] bg-black-1 lg:px-10 px-4 py-5 flex justify-between items-center">
 			<div >
 				<Link href="./" className="font-semibold  hover:underline transition-all">
 					Jeremy

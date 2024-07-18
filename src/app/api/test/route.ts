@@ -44,6 +44,7 @@ export async function POST(req: Request) {
         3. Final Thoughts: Give an overall feedback about the essay. Summarize all the strong and weak points of the essay.
         
         DO NOT ANSWER IF IT IS NOT AN ESSAY
+        ALWAYS END YOUR LAST "comment" SECTION WITH "Good job!"
 
         DONT USE ''' JSON {}
         ''' AT YOUR RESPONSE, I AM GETTING ERROR BECAUSE OF THAT
@@ -52,51 +53,51 @@ export async function POST(req: Request) {
 
         this is json template example:
 
-        {{
+        {
           "Strengths": [
             {
-              "Reason": "Engaging Introduction",
-              "Description": "Your opening paragraph captures attention by setting up the challenge and your initial confidence. This creates a compelling narrative arc."
+              "reason": "Engaging Introduction",
+              "description": "Your opening paragraph captures attention by setting up the challenge and your initial confidence. This creates a compelling narrative arc."
             },
             {
-              "Reason": "Vivid Descriptions",
-              "Description": "You effectively describe the rigorous nature of the program and the emotional and physical toll it took on you and your peers. This helps the reader understand the depth of your experience."
+              "reason": "Vivid Descriptions",
+              "description": "You effectively describe the rigorous nature of the program and the emotional and physical toll it took on you and your peers. This helps the reader understand the depth of your experience."
             },
             {
-              "Reason": "Personal Growth",
-              "Description": "You clearly articulate how the program changed you, both academically and personally. This is crucial for college essays as it shows your ability to reflect and grow from experiences."
+              "reason": "Personal Growth",
+              "description": "You clearly articulate how the program changed you, both academically and personally. This is crucial for college essays as it shows your ability to reflect and grow from experiences."
             }
           ],
           "Areas for Improvement": [
             {
-              "Reason": "Grammar and Punctuation",
-              "Description": "There are several grammatical errors and inconsistencies in capitalization. For example, 'ThIS pAST SUmmEr' should be 'This past summer.' Consistent capitalization and proper grammar will make your essay more professional."
+              "reason": "Grammar and Punctuation",
+              "description": "There are several grammatical errors and inconsistencies in capitalization. For example, 'ThIS pAST SUmmEr' should be 'This past summer.' Consistent capitalization and proper grammar will make your essay more professional."
             },
             {
-              "Reason": "Flow and Structure",
-              "Description": "While your essay is engaging, it could benefit from smoother transitions between paragraphs. For instance, the shift from describing the MITES program to listing your school-year activities could be more seamless."
+              "reason": "Flow and Structure",
+              "description": "While your essay is engaging, it could benefit from smoother transitions between paragraphs. For instance, the shift from describing the MITES program to listing your school-year activities could be more seamless."
             },
             {
-              "Reason": "Specificity and Depth",
-              "Description": "While you mention the subjects you studied and the activities you participated in, adding specific anecdotes or examples can make your experiences more vivid. For example, you could describe a particular problem set that was especially challenging or a moment when you felt particularly supported by your peers."
+              "reason": "Specificity and Depth",
+              "description": "While you mention the subjects you studied and the activities you participated in, adding specific anecdotes or examples can make your experiences more vivid. For example, you could describe a particular problem set that was especially challenging or a moment when you felt particularly supported by your peers."
             },
             {
-              "Reason": "Conclusion",
-              "Description": "Your conclusion could be stronger. Instead of just stating that MITES was the most challenging experience, you could reflect on how it has prepared you for future challenges and your aspirations for college and beyond."
+              "reason": "Conclusion",
+              "description": "Your conclusion could be stronger. Instead of just stating that MITES was the most challenging experience, you could reflect on how it has prepared you for future challenges and your aspirations for college and beyond."
             }
           ],
           "Final Thoughts": {
-            "score": "8/10",
-            "comments": "Your essay has a strong foundation, and with some polishing, it can become even more compelling. Focus on refining the grammar, enhancing the flow, and adding more specific details to make your experiences come alive. Remember, the goal is to show your unique perspective and how your experiences have shaped you. Feel free to ask any further questions or for additional assistance on specific parts of your essay!"
+            "score": "82/100",
+            "comment": "Your essay has a strong foundation, and with some polishing, it can become even more compelling. Focus on refining the grammar, enhancing the flow, and adding more specific details to make your experiences come alive. Remember, the goal is to show your unique perspective and how your experiences have shaped you. Feel free to ask any further questions or for additional assistance on specific parts of your essay! Good job!"
           }
-        }}`
+        }`
 
         const prompt = PromptTemplate.fromTemplate(TEMPLATE);
 
         const model = new ChatOpenAI({
             apiKey: process.env.OPENAI_API_KEY!,
-            model: 'gpt-3.5-turbo',
-            temperature: 0.8,
+            model: 'gpt-4o',
+            temperature: 0.5,
         });
 
         /**
@@ -113,7 +114,6 @@ export async function POST(req: Request) {
             input: currentMessageContent,
             prom: prom
         });
-
 
         // Respond with the stream
         return new StreamingTextResponse(

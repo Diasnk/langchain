@@ -95,5 +95,5 @@
   }
   .left_sidebar {
     @apply sticky left-0 top-0 flex w-fit flex-col  justify-between  border-none  bg-black-1 pt-8 text-white-1 max-md:hidden lg:w-[270px] lg:pl-8;
-  }  
+  }
 }
