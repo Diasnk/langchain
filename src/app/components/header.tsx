@@ -7,12 +7,12 @@ export default function Header() {
 		<div className="text-[#96a7bb] bg-black-1 lg:px-10 px-4 py-5 flex justify-between items-center">
 			<div >
 				<Link href="./" className="font-semibold  hover:underline transition-all">
-					Jeremy
+					Home
 				</Link>
 			</div>
 			<div className="flex items-center justify-center gap-5">
-				<Link href="./counselor" className="flex items-center font-semibold hover:underline transition-all">
-					Counselor
+				<Link href="./feedback" className="flex items-center font-semibold hover:underline transition-all">
+					Feedback
 				</Link>
 				<Link href="./" className="flex items-center font-semibold hover:underline transition-all">
 					Sign In/Log In

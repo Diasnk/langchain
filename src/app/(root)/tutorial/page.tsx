@@ -27,8 +27,9 @@ const Tutorial = () => {
                     </Link>
                 ))}
         </div> */}
-
-        <ModalWindow/>
+      <h1 className="font-bold text-white-1 text-3xl p-10">
+        Here Will Be Two Structure Lessons
+      </h1>
     </div>
   )
 }

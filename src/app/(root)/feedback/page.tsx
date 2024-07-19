@@ -3,24 +3,59 @@
 import { Input } from "@/components/ui/input2"
 import { Button } from "@/components/ui/button2"
 import { useChat } from "ai/react"
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect, useState } from 'react'
 import ExpandableCard from "@/app/components/Section"
+import ModalWindow from "@/app/components/ModalWindow"
+import { CgSpinner } from "react-icons/cg";
 
 const Feedback = () => {
-  const { messages, input, handleInputChange, handleSubmit } = useChat({
+  const { messages, input, handleInputChange, handleSubmit, isLoading } = useChat({
     api: 'api/test',
     onError: (e) => {
       console.log('Error:', e.message);
     }
   });
 
+  const [isOpen, setIsOpen] = useState(false);
+
+  const closeModal = () => {
+    setIsOpen(!isOpen);
+  };
+
   const chatParent = useRef<HTMLUListElement>(null);
+  const modalRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (chatParent.current) {
       chatParent.current.scrollTop = chatParent.current.scrollHeight;
     }
   }, [messages]);
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+  }, [isOpen]);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
+        closeModal();
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    } else {
+      document.removeEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isOpen]);
 
   // Function to parse JSON safely
   function parseJson(content: any) {
@@ -37,22 +72,37 @@ const Feedback = () => {
 
   const feedback = lastMessage ? parseJson(lastMessage.content) : null;
 
+  useEffect(() => {
+    if (feedback) {
+      setIsOpen(true);
+    }
+  }, [feedback]);
+
   return (
     <div>
-      <div className="w-full flex flex-col justify-center px-4 mx-auto">
+      <div className={`w-full flex flex-col justify-center px-4 mx-auto ${isOpen ? 'blurred' : ''}`}>
         <h1 className="text-start mt-10 font-bold text-3xl text-white-1 py-3">
           Send Your Whole Essay!
         </h1>
         <form onSubmit={handleSubmit} className="flex w-full max-w-3xl mt-2 mx-auto items-center">
           <textarea
-            className="w-full p-2 border-2 rounded-md border-black overflow-y-scroll h-10 max-h-40"
+            className=" min-w-full  p-2 border-2 rounded-md border-black overflow-y-scroll h-10 max-h-40"
             placeholder={"Enter your note here"}
             value={input}
             onChange={handleInputChange}
           ></textarea>
-          <Button className="ml-2 bg-gray-800" type="submit">
-            Submit
-          </Button>
+          {isLoading ? (
+            <Button className="ml-2 bg-gray-800 " type="submit">
+              <CgSpinner className="animate-spin h-5 w-5 mr-3" /> 
+                <div className="font-thin">
+                  Processing...
+                </div>
+            </Button>
+          ) : (
+            <Button className="ml-2 bg-gray-800" type="submit">
+              Submit
+            </Button>
+          )}
         </form>
         <div className="w-full flex justify-center pt-4">
             <div className="text-white-3 font-semibold text-xl">
@@ -68,48 +118,18 @@ const Feedback = () => {
             )
           ))}
         </ul>
-
-
-        <ul ref={chatParent} className="">
-            <div className="text-white-3 font-semibold justify-self-center text-xl">
-               Feedback
-             </div>
-             {feedback && (
-            <div className="mb-2 p-4 bg-gray-100 rounded">
-              <h2 className="text-xl font-bold mb-2">Strengths</h2>
-              {feedback['Strengths'].map((strength: any, index: any) => (
-                <ExpandableCard
-                      key={index}
-                      title="Strengths"
-                      content={
-                        <div>
-                          <p><strong>Reason:</strong> {strength.reason}</p>
-                          <p><strong>Description:</strong>{strength.description}</p>
-                        </div>} 
-                      footer={undefined}/>
-              ))}
-              <h2 className="text-xl font-bold mb-2">Areas of Improvement</h2>
-              {feedback['Areas for Improvement'].map((strength: any, index: any) => (
-                <ExpandableCard
-                      key={index}
-                      title="Strengths"
-                      content={
-                        <div>
-                          <p><strong>Reason:</strong> {strength.reason}</p>
-                          <p><strong>Description:</strong>{strength.description}</p>
-                        </div>} 
-                      footer={undefined}/>
-              ))}
-              <h2 className="text-xl font-bold mb-2">Final Thoughts</h2>
-              <div>
-                <strong>Score:</strong> {feedback['Final Thoughts'].score}
-                <br />
-                <strong>Comment:</strong> {feedback['Final Thoughts'].comment}
-              </div>
-            </div>
-          )}
-        </ul>
       </div>
+
+      {isOpen && feedback && (
+        <div className="fixed inset-0 z-20 flex items-center justify-center">
+          <div className="fixed inset-0 bg-black opacity-50" onClick={closeModal}></div>
+          <ModalWindow
+            ref={modalRef}
+            content={feedback}
+            onClose={closeModal}
+          />
+        </div>
+      )}
     </div>
   );
 };
