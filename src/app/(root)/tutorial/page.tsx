@@ -17,6 +17,8 @@ const Tutorial = () => {
         path: '/321'
     },
   ]  
+
+  
   return (
     <div>
         {/* <div className="w-full flex justify-center h-screen bg-black">
@@ -30,6 +32,7 @@ const Tutorial = () => {
       <h1 className="font-bold text-white-1 text-3xl p-10">
         Here Will Be Two Structure Lessons
       </h1>
+      
     </div>
   )
 }

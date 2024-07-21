@@ -44,7 +44,6 @@ export async function POST(req: Request) {
         3. Final Thoughts: Give an overall feedback about the essay. Summarize all the strong and weak points of the essay.
         
         DO NOT ANSWER IF IT IS NOT AN ESSAY
-        ALWAYS END YOUR LAST "comment" SECTION WITH "Good job!"
 
         DONT USE ''' JSON {}
         ''' AT YOUR RESPONSE, I AM GETTING ERROR BECAUSE OF THAT

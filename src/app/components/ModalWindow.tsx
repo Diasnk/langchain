@@ -1,15 +1,15 @@
-import React, { forwardRef } from 'react';
+import React from 'react';
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
 import { IoMdClose } from "react-icons/io"
 
-const ModalWindow = forwardRef<HTMLDivElement, { content: any, onClose: () => void }>(({ content, onClose }, ref) => {
+const ModalWindow = ({ content, close }: { content: any, close: any }) => {
   const progressValue = content['Final Thoughts'].score;
 
   return (
-    <div ref={ref} className='w-3/5 min-h-fit bg-black-1 rounded-lg p-5 relative z-30'>
-      <IoMdClose className='text-white-1 w-6 h-6 cursor-pointer absolute right-3 top-3' onClick={onClose} />
+    <div className='w-3/5 min-h-fit bg-black-1 absolute rounded-lg p-5 z-30 top-20 left-1/2 transform -translate-x-1/2'>
+      <IoMdClose className='text-white-1 w-6 h-6 cursor-pointer absolute right-3 top-3' onClick={close} />
       <div className='md:flex'>
         <div className='md:w-1/2 text-center'>
           <div className='flex flex-col items-center font-thin text-white-1'>
@@ -36,6 +36,7 @@ const ModalWindow = forwardRef<HTMLDivElement, { content: any, onClose: () => vo
               </AccordionItem>
             ))}
           </Accordion>
+          <h2 className='font-semibold pt-4 pb-1 text-white-1'>Areas of Improvement</h2>
           <Accordion type='single' collapsible className='w-full text-white-1 '>
             {content['Areas for Improvement'].map((strength: any, index: any) => (
               <AccordionItem key={index} value={'index-' + index}>
@@ -52,6 +53,6 @@ const ModalWindow = forwardRef<HTMLDivElement, { content: any, onClose: () => vo
       </div>
     </div>
   )
-});
+};
 
 export default ModalWindow;
