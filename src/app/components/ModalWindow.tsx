@@ -8,7 +8,7 @@ const ModalWindow = ({ content, close }: { content: any, close: any }) => {
   const progressValue = content['Final Thoughts'].score;
 
   return (
-    <div className='w-3/5 min-h-fit bg-black-1 absolute rounded-lg p-5 z-30 top-20 left-1/2 transform -translate-x-1/2'>
+    <div className='w-3/5 min-h-fit bg-black-1 absolute rounded-lg p-5 z-10 md:top-20 md:-right-48 left-1/2 top-48 transform -translate-x-1/2'>
       <IoMdClose className='text-white-1 w-6 h-6 cursor-pointer absolute right-3 top-3' onClick={close} />
       <div className='md:flex'>
         <div className='md:w-1/2 text-center'>

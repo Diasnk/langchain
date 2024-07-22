@@ -12,11 +12,6 @@ const LeftSidebar = () => {
 
   const sidebarLinks = [
     {
-      imgURL: "/icons/home.svg",
-      route: "/",
-      label: "Home",
-    },
-    {
       imgURL: "/icons/discover.svg",
       route: "/feedback",
       label: "Get Feedback",
