@@ -80,7 +80,7 @@ const Feedback = () => {
                 <div key={id} className="h-min mb-2 p-4 bg-black-1 text-white-1 rounded w-5/6">
                   {content}
                 </div>
-                <Button className='text-white-1 bg-black-1 rounded-lg' onClick={toggleOpen}> Open Modal Window</Button>
+                <Button key={id} className='text-white-1 bg-black-1 rounded-lg' onClick={toggleOpen}> Open Modal Window</Button>
               </div>
             )
           ))}
