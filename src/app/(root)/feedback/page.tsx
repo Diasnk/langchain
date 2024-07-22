@@ -75,7 +75,7 @@ const Feedback = () => {
         <ul ref={chatParent} className="mt-6 w-full min-h-screen flex flex-col justify-center">
           {messages.map(({ content, id, role }) => (
             role === 'user' && (
-              <div className='w-full h-fit flex '>
+              <div key={id} className='w-full h-fit flex '>
 
                 <div key={id} className="h-min mb-2 p-4 bg-black-1 text-white-1 rounded w-5/6">
                   {content}
