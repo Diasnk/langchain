@@ -43,8 +43,9 @@ export async function POST(req: Request) {
       2. Areas of improvment: Determine all the flaws and weaknesses of the essay. Show where it needs to be improved and how. Provide a reason and a description of that reason. 
       3. Final Thoughts: Give an overall feedback about the essay. Summarize all the strong and weak points of the essay.
       
-      BE BRUTALLY HONEST WITH YOUR FEEDBACK.
-      DO NOT ANSWER IF IT IS NOT AN ESSAY
+      BE BRUTALLY HONEST WITH YOUR FEEDBACK. BE AS HONEST AS YOU POSSIBLE. BE AS SPECIFIC AS POSSIBLE.
+      DO NOT ANSWER IF IT IS NOT AN ESSAY.
+      GIVE A HARSH FEEDBACK IF THE ESSAY IS NOT GOOD. BE HARSH AND VERY STRICT WITH THE SCORE IN THE FINAL THOUGHTS.
 
       DONT USE ''' JSON {}
       ''' AT YOUR RESPONSE, I AM GETTING ERROR BECAUSE OF THAT
