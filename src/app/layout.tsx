@@ -6,6 +6,7 @@ import "./globals.css";
 import Header from "./components/header";
 import Footer from "./components/footer";
 import {Analytics} from "@vercel/analytics/react"
+import SessionWrapper from "./components/SesionWrapper";
 
 // const montserrat = Montserrat({
 //   subsets: ["latin", "cyrillic"],
@@ -31,7 +32,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <>
+    <SessionWrapper>
      
       <html lang="en">
         <body className={exo.className}>
@@ -39,6 +40,6 @@ export default function RootLayout({
           <Analytics/>
         </body>
       </html>
-    </>
+    </SessionWrapper>
   );
 }

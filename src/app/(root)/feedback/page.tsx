@@ -4,13 +4,13 @@ import React, { useRef, useEffect, useState } from 'react'
 import { Input } from "@/components/ui/input2"
 import { Button } from "@/components/ui/button2"
 import { useChat } from "ai/react"
-import ExpandableCard from "@/app/components/Section"
 import ModalWindow from "@/app/components/ModalWindow"
 import ModalWindowLoading from '@/app/components/ModalWindowLoading'
+import MobileNav from '@/app/components/MobileNav'
 
 const Feedback = () => {
   const { messages, input, handleInputChange, handleSubmit, isLoading } = useChat({
-    api: 'api/test',
+    api: 'api/feedback',
     onError: (e) => {
       console.log('Error:', e.message);
     }
@@ -53,6 +53,7 @@ const Feedback = () => {
   return (
     <div>
       <div className="w-full flex flex-col justify-center px-4 mx-auto">
+        <MobileNav />
         <h1 className="text-start mt-10 font-bold text-3xl text-white-1 py-3">
           Send Your Whole Essay!
         </h1>
@@ -67,20 +68,24 @@ const Feedback = () => {
             Submit
           </Button>
         </form>
-        <div className="w-full flex justify-center pt-4">
-            <div className="text-white-3 font-semibold text-xl">
-                Your Essay
-            </div>
-        </div>
+        
         <ul ref={chatParent} className="mt-6 w-full min-h-screen flex flex-col justify-center">
           {messages.map(({ content, id, role }) => (
             role === 'user' && (
-              <div key={id} className='w-full h-fit flex '>
-
-                <div key={id} className="h-min mb-2 p-4 bg-black-1 text-white-1 rounded w-5/6">
+              <div key={id} className='w-full h-fit grid grid-cols-8'>
+                <div className="text-white-3 font-semibold text-xl col-span-8 w-full flex justify-center pb-4">
+                    Your Essay
+                </div>
+                <div key={id} className="h-min mb-2 p-4 bg-black-1 text-white-1 rounded w-full col-span-6">
                   {content}
                 </div>
-                <Button key={id} className='text-white-1 bg-black-1 rounded-lg' onClick={toggleOpen}> Open Modal Window</Button>
+                <div>
+                  <button key={id} className='relative h-fit inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-white-1 hover:text-black rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 focus:ring-2 focus:outline-none focus:ring-green-200 col-span-2 ml-4' onClick={toggleOpen}> 
+                    <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-black-1 rounded-md group-hover:bg-opacity-0">
+                      Open ModalWindow
+                    </span>
+                  </button>
+                </div>
               </div>
             )
           ))}

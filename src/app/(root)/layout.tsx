@@ -1,5 +1,5 @@
 import LeftSidebar from "@/app/components/LeftSidebar";
-import MobileNav from "@/app/components/MobilleNav";
+import MobileNav from "@/app/components/MobileNav";
 import RightSidebar from "@/app/components/RightSidebar";
 import Image from "next/image";
 // import { Toaster } from "@/components/ui/toaster"
@@ -20,7 +20,7 @@ export default function RootLayout({
             </div>
         </div>
         
-          <RightSidebar/>
+        <RightSidebar/>
         
         
       </main>
