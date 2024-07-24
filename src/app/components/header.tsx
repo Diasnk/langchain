@@ -1,3 +1,5 @@
+import { SignedIn, SignedOut, SignOutButton, UserButton } from "@clerk/clerk-react";
+import { SignUpButton } from "@clerk/nextjs";
 import Link from "next/link";
 import { BiSolidGroup } from 'react-icons/bi'
 
@@ -15,7 +17,14 @@ export default function Header() {
 					Feedback
 				</Link>
 				<Link href="./" className="flex items-center font-semibold hover:underline transition-all">
-					Sign In/Log In
+					<SignedIn>
+						<div className="text-white-1">
+							<UserButton showName/>	
+						</div>
+					</SignedIn>
+					<SignedOut>
+						<SignUpButton></SignUpButton>
+					</SignedOut>
 				</Link>
 			</div>
 		</div>

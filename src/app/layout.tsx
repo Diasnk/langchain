@@ -6,7 +6,8 @@ import "./globals.css";
 import Header from "./components/header";
 import Footer from "./components/footer";
 import {Analytics} from "@vercel/analytics/react"
-import SessionWrapper from "./components/SesionWrapper";
+import { ClerkProvider } from "@clerk/nextjs";
+
 
 // const montserrat = Montserrat({
 //   subsets: ["latin", "cyrillic"],
@@ -32,14 +33,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <SessionWrapper>
-     
+    <ClerkProvider>
       <html lang="en">
         <body className={exo.className}>
           {children}        
           <Analytics/>
         </body>
       </html>
-    </SessionWrapper>
+    </ClerkProvider>
   );
 }
