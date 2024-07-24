@@ -28,10 +28,9 @@ export default function Landing() {
                                 router.push("./feedback")
                             }}>
                                 <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-black-1 rounded-md group-hover:bg-opacity-0">
-                                    Message
+                                    Get Your Feedback
                                 </span>
                         </button>
-                        
 
                     {/* <button className="w-24 h-10 rounded-xl border">Message</button> */}
                     </div>
