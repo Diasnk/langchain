@@ -1,7 +1,8 @@
+'use client'
+
 import { SignedIn, SignedOut, SignOutButton, UserButton } from "@clerk/clerk-react";
 import { SignUpButton } from "@clerk/nextjs";
 import Link from "next/link";
-import { BiSolidGroup } from 'react-icons/bi'
 
 
 export default function Header() {
