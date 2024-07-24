@@ -55,17 +55,17 @@ const Feedback = () => {
       <div className="w-full flex flex-col justify-center px-4 mx-auto">
         <MobileNav />
         <h1 className="text-start mt-10 font-bold text-3xl text-white-1 py-3">
-          Send Your Whole Essay!
+          Put Your Essay Here!
         </h1>
-        <form onSubmit={handleSubmit} className="flex w-full max-w-3xl mt-2 mx-auto items-center">
+        <form onSubmit={handleSubmit} className="flex w-full mt-2 mx-auto items-center">
           <textarea
             className="w-full p-2 border-2 rounded-md border-black overflow-y-scroll h-10 max-h-40"
-            placeholder={"Enter your note here"}
+            placeholder={"Enter your essay here"}
             value={input}
             onChange={handleInputChange}
           ></textarea>
           <Button className="ml-2 bg-gray-800" type="submit">
-            Submit
+            Get Feedback
           </Button>
         </form>
         
