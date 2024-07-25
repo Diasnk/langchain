@@ -9,7 +9,7 @@ import {
   SheetTitle,
   SheetTrigger,
   } from "@/components/ui/sheet"
-import Image from 'next/image';
+import Image from "next/image";
 import { Button } from "@/components/ui/button"
 import { SignInButton } from "@clerk/nextjs";
 
@@ -25,9 +25,9 @@ export default function Component() {
             <Sheet>
                 <SheetTrigger asChild>
                     <Image
-                        className='cursor-pointer'
-                        src='/icons/hamburger.svg'
-                        alt='menu'
+                        className="cursor-pointer"
+                        src="/icons/hamburger.svg"
+                        alt="menu"
                         height={40}
                         width={40}
                     />
