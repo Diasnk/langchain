@@ -164,9 +164,9 @@ export default function Component() {
                   </div>
                 </div>
                 <p className="text-muted-foreground">
-                  "The feedback I received from the essay review tool was invaluable. It helped me craft a compelling
+                  &quot;The feedback I received from the essay review tool was invaluable. It helped me craft a compelling
                   and authentic essay that really showcased my strengths and passion. I&apos;m so grateful for this
-                  resource!"
+                  resource!&quot;
                 </p>
               </div>
               <div className="grid gap-4 rounded-lg border bg-background p-6">
@@ -180,9 +180,9 @@ export default function Component() {
                   </div>
                 </div>
                 <p className="text-muted-foreground">
-                  "I was really struggling to find my voice and stand out in my college essays, but the personalized
+                  &quot;I was really struggling to find my voice and stand out in my college essays, but the personalized
                   feedback from this tool helped me do just that. I&apos;m so glad I used it - it made all the difference in
-                  my applications."
+                  my applications.&quot;
                 </p>
               </div>
             </div>
