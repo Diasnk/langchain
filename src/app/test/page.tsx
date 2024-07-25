@@ -36,7 +36,7 @@ export default function Component() {
                     <SheetHeader>
                     <SheetTitle>Edit profile</SheetTitle>
                     <SheetDescription>
-                        Make changes to your profile here. Click save when you're done.
+                        Make changes to your profile here. Click save when you&apos;re done.
                     </SheetDescription>
                     </SheetHeader>
                     <div className="grid gap-4 py-4">
@@ -106,7 +106,7 @@ export default function Component() {
               <div className="grid gap-1">
                 <h3 className="text-lg font-bold">Personalized Feedback</h3>
                 <p className="text-sm text-muted-foreground">
-                  Get detailed feedback on your essay's structure, content, and tone to help you make it shine.
+                  Get detailed feedback on your essay&apos;s structure, content, and tone to help you make it shine.
                 </p>
               </div>
               <div className="grid gap-1">
@@ -125,13 +125,13 @@ export default function Component() {
               <div className="grid gap-1">
                 <h3 className="text-lg font-bold">Tone and Voice Guidance</h3>
                 <p className="text-sm text-muted-foreground">
-                  Receive feedback on your essay's tone and voice to ensure it aligns with the college's desired style.
+                  Receive feedback on your essay&apos;s tone and voice to ensure it aligns with the college&apos;s desired style.
                 </p>
               </div>
               <div className="grid gap-1">
                 <h3 className="text-lg font-bold">Unlimited Revisions</h3>
                 <p className="text-sm text-muted-foreground">
-                  Don't worry about getting it perfect the first time - revise your essay as many times as needed.
+                  Don&apos;t worry about getting it perfect the first time - revise your essay as many times as needed.
                 </p>
               </div>
               <div className="grid gap-1">
@@ -165,7 +165,7 @@ export default function Component() {
                 </div>
                 <p className="text-muted-foreground">
                   "The feedback I received from the essay review tool was invaluable. It helped me craft a compelling
-                  and authentic essay that really showcased my strengths and passion. I'm so grateful for this
+                  and authentic essay that really showcased my strengths and passion. I&apos;m so grateful for this
                   resource!"
                 </p>
               </div>
@@ -181,7 +181,7 @@ export default function Component() {
                 </div>
                 <p className="text-muted-foreground">
                   "I was really struggling to find my voice and stand out in my college essays, but the personalized
-                  feedback from this tool helped me do just that. I'm so glad I used it - it made all the difference in
+                  feedback from this tool helped me do just that. I&apos;m so glad I used it - it made all the difference in
                   my applications."
                 </p>
               </div>
