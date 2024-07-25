@@ -52,12 +52,12 @@ const Feedback = () => {
 
   return (
     <div>
-      <div className="w-full flex flex-col justify-center px-4 mx-auto">
+      <div className="w-full flex flex-col justify-center pl-2 md:px-4 md:mx-auto">
         <MobileNav />
         <h1 className="text-start mt-10 font-bold text-3xl text-white-1 py-3">
           Put Your Essay Here!
         </h1>
-        <form onSubmit={handleSubmit} className="flex w-full mt-2 mx-auto items-center">
+        <form onSubmit={handleSubmit} className="flex flex-col md:flex-row gap-4 md:gap-0 w-full mt-2 mx-auto items-center">
           <textarea
             className="w-full p-2 border-2 rounded-md border-black overflow-y-scroll h-10 max-h-40"
             placeholder={"Enter your essay here"}
