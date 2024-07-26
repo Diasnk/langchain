@@ -59,7 +59,7 @@ const Feedback = () => {
         </h1>
         <form onSubmit={handleSubmit} className="flex flex-col md:flex-row gap-4 md:gap-0 w-full mt-2 mx-auto items-center">
           <textarea
-            className="w-full p-2 border-2 rounded-md border-black overflow-y-scroll h-10 max-h-40"
+            className="w-full p-2 border-2 rounded-md border-black overflow-y-scroll h-20 max-h-40"
             placeholder={"Enter your essay here"}
             value={input}
             onChange={handleInputChange}
@@ -79,10 +79,10 @@ const Feedback = () => {
                 <div key={id} className="h-min mb-2 p-4 bg-black-1 text-white-1 rounded w-full col-span-6">
                   {content}
                 </div>
-                <div>
-                  <button key={id} className='relative h-fit inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-white-1 hover:text-black rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 focus:ring-2 focus:outline-none focus:ring-green-200 col-span-2 ml-4' onClick={toggleOpen}> 
-                    <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-black-1 rounded-md group-hover:bg-opacity-0">
-                      Open ModalWindow
+                <div className=''>
+                  <button key={id} className='w-full h-fit inline-flex items-center justify-center p-0.5 mb-2 overflow-hidden text-sm md:font-medium text-white-1 hover:text-black rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 focus:ring-2 focus:outline-none focus:ring-green-200 col-span-2  ml-4' onClick={toggleOpen}> 
+                    <span className="md:px-1.5 xl:px-4  md:py-2 py-1 transition-all ease-in duration-75 bg-black-1 rounded-md group-hover:bg-opacity-0">
+                      Open Modal
                     </span>
                   </button>
                 </div>

@@ -25,6 +25,9 @@ const UserSchema = new Schema({
     lastName:{
         type: String,
     },
+    userEssays:{
+        type: [String],
+    },
 });
 
 
