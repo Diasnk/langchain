@@ -2,24 +2,8 @@
 
 import { auth } from '@clerk/nextjs/server';
 import { revalidatePath } from 'next/cache';
-import { promises as fs } from 'fs';
-import path from 'path';
-
-const dbPath = path.join(process.cwd(), 'db2.json');
-
-async function readDatabase() {
-  try {
-    const data = await fs.readFile(dbPath, 'utf8');
-    return JSON.parse(data);
-  } catch (error) {
-    // If the file does not exist or there is an error, return an empty array
-    return [];
-  }
-}
-
-async function writeDatabase(data: any) {
-  await fs.writeFile(dbPath, JSON.stringify(data, null, 2));
-}
+import clientPromise from '@/lib/mongodb';
+import { v4 as uuidv4 } from 'uuid';
 
 export async function createWordAction(prevState: any, formData: any) {
   const essayTitle = formData.get('essayTitle');
@@ -35,16 +19,26 @@ export async function createWordAction(prevState: any, formData: any) {
     return { message: 'User not authenticated' };
   }
 
-  const essays = await readDatabase();
-  // Ensure essays is an array
-  if (!Array.isArray(essays)) {
-    throw new Error('Failed to load essays data');
-  }
-  essays.push({ userId, title: essayTitle, text: essayText });
-  await writeDatabase(essays);
+  try {
+    const client = await clientPromise;
+    const db = client.db('essaysDB');
+    const essays = db.collection('essays');
 
-  revalidatePath('/essays');
-  return { message: '' };
+    const newEssay = {
+      id: uuidv4(),
+      userId,
+      title: essayTitle,
+      text: essayText
+    };
+
+    await essays.insertOne(newEssay);
+
+    revalidatePath('/essays');
+    return { message: '' };
+  } catch (error) {
+    console.error('Error creating essay:', error);
+    return { message: 'An error occurred while saving the essay' };
+  }
 }
 
 export async function fetchEssays() {
@@ -54,11 +48,15 @@ export async function fetchEssays() {
     return [];
   }
 
-  const essays = await readDatabase();
-  // Ensure essays is an array
-  if (!Array.isArray(essays)) {
-    throw new Error('Failed to load essays data');
+  try {
+    const client = await clientPromise;
+    const db = client.db('essaysDB');
+    const essays = db.collection('essays');
+
+    const userEssays = await essays.find({ userId }).toArray();
+    return userEssays;
+  } catch (error) {
+    console.error('Error fetching essays:', error);
+    return [];
   }
-  // Filter essays to include only those that belong to the current user
-  return essays.filter((essay: { userId: string; title: string; text: string }) => essay.userId === userId);
 }

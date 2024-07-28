@@ -14,7 +14,11 @@ const Essays = () => {
   useEffect(() => {
     async function loadEssays() {
       const savedEssays = await fetchEssays();
-      setEssays(savedEssays); 
+      const formattedEssays = savedEssays.map((essay) => ({
+        title: essay.title,
+        text: essay.text,
+      }));
+      setEssays(formattedEssays);
     }
 
     loadEssays();
@@ -33,7 +37,11 @@ const Essays = () => {
       setEssayTitle('');
       setEssayText('');
       const savedEssays = await fetchEssays();
-      setEssays(savedEssays);
+      const formattedEssays = savedEssays.map((essay) => ({
+        title: essay.title,
+        text: essay.text,
+      }));
+      setEssays(formattedEssays);
     }
   };
 
