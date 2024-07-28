@@ -22,19 +22,25 @@ async function writeDatabase(data: any) {
 }
 
 export async function createWordAction(prevState: any, formData: any) {
-  const wordText = formData.get('wordText');
+  const essayTitle = formData.get('essayTitle');
+  const essayText = formData.get('essayText');
 
-  if (wordText === '') {
-    return { message: 'Please enter your essay text' };
+  if (!essayTitle || !essayText) {
+    return { message: 'Please enter both your essay title and text' };
   }
 
-  const { userId } = auth();
+  const { userId } : { userId: string | null } = auth();
+  
+  if (!userId) {
+    return { message: 'User not authenticated' };
+  }
+
   const essays = await readDatabase();
   // Ensure essays is an array
   if (!Array.isArray(essays)) {
     throw new Error('Failed to load essays data');
   }
-  essays.push({ userId, text: wordText });
+  essays.push({ userId, title: essayTitle, text: essayText });
   await writeDatabase(essays);
 
   revalidatePath('/essays');
@@ -42,10 +48,17 @@ export async function createWordAction(prevState: any, formData: any) {
 }
 
 export async function fetchEssays() {
+  const { userId } : { userId: string | null } = auth();
+  
+  if (!userId) {
+    return [];
+  }
+
   const essays = await readDatabase();
   // Ensure essays is an array
   if (!Array.isArray(essays)) {
     throw new Error('Failed to load essays data');
   }
-  return essays;
+  // Filter essays to include only those that belong to the current user
+  return essays.filter((essay: { userId: string; title: string; text: string }) => essay.userId === userId);
 }
