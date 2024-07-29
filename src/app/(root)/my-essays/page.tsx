@@ -5,6 +5,7 @@ import { Input } from '@/components/ui/input';
 import React, { useState, useEffect } from 'react';
 import { createWordAction, deleteEssayAction, fetchEssays } from '@/lib/actions/actions';
 import EssayCard from '@/app/components/EssayCard';
+import Link from 'next/link';
 
 const Essays = () => {
   const [essayTitle, setEssayTitle] = useState('');
@@ -86,14 +87,23 @@ const Essays = () => {
       </form>
       {message && <p>{message}</p>}
       <div className='w-full flex justify-center'>
-        <div className='w-full grid grid-flow-row  grid-cols-1 md:grid-cols-3'>
+        <div className='w-full grid grid-flow-row grid-cols-1 md:grid-cols-3 gap-6'>
           {essays.length > 0 ? (
             essays.map((essay, index) => (
-              <div key={index}>
-                <EssayCard essay={essay}/>
-                <Button onClick={() => handleDelete(essay.id)}>Delete</Button>
+              <div key={index} className='w-64 h-80 bg-white-1 rounded-lg shadow-lg flex flex-col my-6 transition-transform transform hover:scale-105'>
+                <div className='p-4'>
+                  <h1 className='text-gray-800 font-bold text-lg border-b pb-2 truncate'>{essay.title}</h1>
+                </div>
+                <div className='px-4 flex-1 overflow-hidden '>
+                  <p className='text-gray-600 text-justify overflow-hidden text-ellipsis'>{essay.text}</p>
+                </div>
+                <div className='flex justify-between items-center p-3.5'>
+                  <Link href={`/my-essays/${essay.id}`}>
+                    <Button className='bg-blue-500 text-white-1 px-4 py-2 rounded hover:bg-blue-600 transition'>Read More</Button>
+                  </Link>
+                  <Button className='bg-red-500 text-white-1 px-4 py-2 rounded hover:bg-red-600 transition' onClick={() => handleDelete(essay.id)}>Delete</Button>
+                </div>
               </div>
-              
             ))
           ) : (
             <p>No essays saved yet.</p>

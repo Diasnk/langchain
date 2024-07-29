@@ -13,7 +13,7 @@ const EssayCard = ({ essay }: { essay: any }) => {
       <div className='px-2 flex-1 overflow-hidden'>
         <p className='text-black-1 text-justify overflow-hidden text-ellipsis'>{essay.text}</p>
       </div>
-      <Link className='flex justify-end' href={`/my-essays/${essay.title}`}>
+      <Link className='flex justify-end' href={`/my-essays/${essay.id}`}>
         <Button className='m-2.5' >Read More</Button>
       </Link>
     </div>
