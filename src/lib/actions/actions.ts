@@ -60,3 +60,25 @@ export async function fetchEssays() {
     return [];
   }
 }
+
+export async function deleteEssayAction(essayId: string) {
+  const { userId } : { userId: string | null } = auth();
+  
+  if (!userId) {
+    return { message: 'User not authenticated' };
+  }
+
+  try {
+    const client = await clientPromise;
+    const db = client.db('essaysDB');
+    const essays = db.collection('essays');
+
+    await essays.deleteOne({ id: essayId, userId });
+
+    revalidatePath('/essays');
+    return { message: '' };
+  } catch (error) {
+    console.error('Error deleting essay:', error);
+    return { message: 'An error occurred while deleting the essay' };
+  }
+}

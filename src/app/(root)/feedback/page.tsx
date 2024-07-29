@@ -76,7 +76,7 @@ const Feedback = () => {
                 <div className="text-white-3 font-semibold text-xl col-span-8 w-full flex justify-center pb-4">
                     Your Essay
                 </div>
-                <div key={id} className="h-min mb-2 p-4 bg-black-1 text-white-1 rounded w-full col-span-6">
+                <div key={id} className="h-min mb-2 p-4 bg-black-1 text-white-1 rounded w-full col-span-6 text-justify">
                   {content}
                 </div>
                 <div className=''>
