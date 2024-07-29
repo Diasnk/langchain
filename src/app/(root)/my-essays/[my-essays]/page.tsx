@@ -5,7 +5,7 @@ import { useEffect, useState } from "react"
 import { fetchEssays } from "@/lib/actions/actions"
 import EssayCard from "@/app/components/EssayCard"
 
-const page = () => {
+export default function Essay(){
   const pathname = usePathname()
 
   const myEssays = pathname.split('/').pop()
@@ -34,5 +34,3 @@ const page = () => {
     </div>
   )
 }
-
-export default page
