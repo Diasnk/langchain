@@ -66,7 +66,7 @@ const Essays = () => {
 
   return (
     <div className='pt-10'>
-      <h1 className='text-white-1'>My Essays</h1>
+      <h1 className='text-white-1 py-2 font-bold text-2xl'>My Essays</h1>
       <form className='' onSubmit={handleSubmit}>
         <div className='flex w-full flex-col gap-4'>
           <Input 

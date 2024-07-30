@@ -31,7 +31,10 @@ export default function Essay(){
   return (
     <div className="text-white-1">
       {essays.map((essay, index) => (
-        essay.id.trim() === (myEssays as string) && <div key={index} className="text-white-1">{essay.title}</div>
+        essay.id.trim() === (myEssays as string) && <div key={index} className="text-white-1">
+          <h1 className="font-bold text-2xl">{essay.title}</h1>
+          <p className="">{essay.text}</p>
+        </div>
       ))}
     </div>
   )
