@@ -8,6 +8,9 @@ import Footer from "./components/footer";
 import {Analytics} from "@vercel/analytics/react"
 import { ClerkProvider } from "@clerk/nextjs";
 
+import Script from "next/script";
+import Providers from "./Providers";
+
 
 // const montserrat = Montserrat({
 //   subsets: ["latin", "cyrillic"],
@@ -35,9 +38,13 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
+        
         <body className={exo.className}>
-          {children}        
+          <Providers>
+            {children}
+          </Providers>
           <Analytics/>
+          
         </body>
       </html>
     </ClerkProvider>
