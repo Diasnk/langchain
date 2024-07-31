@@ -82,3 +82,25 @@ export async function deleteEssayAction(essayId: string) {
     return { message: 'An error occurred while deleting the essay' };
   }
 }
+
+export async function updateEssayAction(essayId: string, newText: string) {
+  const { userId } : { userId: string | null } = auth();
+  
+  if (!userId) {
+    return { message: 'User not authenticated' };
+  }
+
+  try {
+    const client = await clientPromise;
+    const db = client.db('essaysDB');
+    const essays = db.collection('essays');
+
+    await essays.updateOne({ id: essayId, userId }, { $set: { text: newText } });
+
+    revalidatePath('/essays');
+    return { message: '' };
+  } catch (error) {
+    console.error('Error updating essay:', error);
+    return { message: 'An error occurred while updating the essay' };
+  }
+}

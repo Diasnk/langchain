@@ -59,12 +59,13 @@ const Feedback = () => {
         </h1>
         <form onSubmit={handleSubmit} className="flex flex-col md:flex-row gap-4 md:gap-0 w-full mt-2 mx-auto items-center">
           <textarea
-            className="w-full p-2 border-2 rounded-md border-black overflow-y-scroll h-20 max-h-40"
-            placeholder={"Enter your essay here"}
+            className="w-full p-2 border-2 bg-[#e1e1e1] rounded-lg border-gray-600 placeholder:text-black-1 placeholder:italic"
+            placeholder={"Enter your essay here..."}
             value={input}
             onChange={handleInputChange}
+            rows={5}
           ></textarea>
-          <Button className="ml-2 bg-gray-800" type="submit">
+          <Button className="ml-5" type="submit">
             Get Feedback
           </Button>
         </form>

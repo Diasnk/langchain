@@ -68,17 +68,17 @@ const Essays = () => {
     <div className='pt-10'>
       <h1 className='text-white-1 py-2 font-bold text-2xl'>My Essays</h1>
       <form className='' onSubmit={handleSubmit}>
-        <div className='flex w-full flex-col gap-4'>
+        <div className='flex w-full flex-col gap-4 '>
           <Input 
             type="text" 
             value={essayTitle} 
             onChange={(e) => setEssayTitle(e.target.value)} 
-            placeholder="Enter your essay title" 
-            className='w-full'        
+            placeholder="Enter your essay's title here..." 
+            className='w-full placeholder:text-black-1 placeholder:italic bg-[#e1e1e1]'        
             />
           <textarea
-            className="w-full p-2 border-2 rounded-md border-black overflow-y-scroll h-20 max-h-40"
-            placeholder={"Enter your essay here"}
+            className="w-full p-2 border-2 rounded-md bg-[#e1e1e1] overflow-y-scroll h-20 max-h-40 placeholder:text-black-1 placeholder:italic"
+            placeholder={"Enter your essay here..."}
             value={essayText}
             onChange={(e) => setEssayText(e.target.value)}
           ></textarea>
@@ -90,16 +90,16 @@ const Essays = () => {
         <div className='w-full grid grid-flow-row grid-cols-1 md:grid-cols-3 gap-6'>
           {essays.length > 0 ? (
             essays.map((essay, index) => (
-              <div key={index} className='w-64 h-80 bg-white-1 rounded-lg shadow-lg flex flex-col my-6 transition-transform transform hover:scale-105'>
+              <div key={index} className='w-64 h-80 bg-[#e1e1e1] rounded-lg shadow-lg flex flex-col my-6 transition-transform transform hover:scale-105'>
                 <div className='p-4'>
                   <h1 className='text-gray-800 font-bold text-lg border-b pb-2 truncate'>{essay.title}</h1>
                 </div>
                 <div className='px-4 flex-1 overflow-hidden '>
-                  <p className='text-gray-600 text-justify overflow-hidden text-ellipsis'>{essay.text}</p>
+                  <p className='text-black-4 text-justify overflow-hidden text-ellipsis'>{essay.text}</p>
                 </div>
                 <div className='flex justify-between items-center p-3.5'>
                   <Link href={`/my-essays/${essay.id}`}>
-                    <Button className='bg-blue-500 text-white-1 px-4 py-2 rounded hover:bg-blue-600 transition'>Read More</Button>
+                    <Button className=' text-white-1 px-4 py-2 rounded transition'>Read More</Button>
                   </Link>
                   <Button className='bg-red-500 text-white-1 px-4 py-2 rounded hover:bg-red-600 transition' onClick={() => handleDelete(essay.id)}>Delete</Button>
                 </div>
