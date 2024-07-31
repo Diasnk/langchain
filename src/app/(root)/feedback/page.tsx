@@ -65,7 +65,7 @@ const Feedback = () => {
             onChange={handleInputChange}
             rows={5}
           ></textarea>
-          <Button className="ml-5" type="submit">
+          <Button className="ml-5 hover:bg-slate-800" type="submit">
             Get Feedback
           </Button>
         </form>
@@ -83,7 +83,7 @@ const Feedback = () => {
                 <div className=''>
                   <button key={id} className='w-full h-fit inline-flex items-center justify-center p-0.5 mb-2 overflow-hidden text-sm md:font-medium text-white-1 hover:text-black rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 focus:ring-2 focus:outline-none focus:ring-green-200 col-span-2  ml-4' onClick={toggleOpen}> 
                     <span className="md:px-1.5 xl:px-4  md:py-2 py-1 transition-all ease-in duration-75 bg-black-1 rounded-md group-hover:bg-opacity-0">
-                      Open Modal
+                      Feedback
                     </span>
                   </button>
                 </div>

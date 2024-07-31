@@ -13,6 +13,7 @@ export default function RootLayout({
     <div className="relative flex flex-col">
       <main className="relative flex bg-black-3">
         <LeftSidebar />
+        
         <div className="flex min-h-screen w-full flex-col px-4 sm:px-14">
             <div className="">
               {/* <Toaster /> */}

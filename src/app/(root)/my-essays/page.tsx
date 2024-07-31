@@ -6,6 +6,8 @@ import React, { useState, useEffect } from 'react';
 import { createWordAction, deleteEssayAction, fetchEssays } from '@/lib/actions/actions';
 import EssayCard from '@/app/components/EssayCard';
 import Link from 'next/link';
+import { Separator } from '@/components/ui/separator';
+import MobileNav from '@/app/components/MobileNav';
 
 const Essays = () => {
   const [essayTitle, setEssayTitle] = useState('');
@@ -65,8 +67,9 @@ const Essays = () => {
   };
 
   return (
-    <div className='pt-10'>
-      <h1 className='text-white-1 py-2 font-bold text-2xl'>My Essays</h1>
+    <div className='pt-3'>
+      <MobileNav />
+      <h1 className='text-white-1 pt-5 pb-3 font-bold text-2xl'>My Essays</h1>
       <form className='' onSubmit={handleSubmit}>
         <div className='flex w-full flex-col gap-4 '>
           <Input 
@@ -82,7 +85,7 @@ const Essays = () => {
             value={essayText}
             onChange={(e) => setEssayText(e.target.value)}
           ></textarea>
-          <Button className='w-fit' type="submit">Save Essay</Button>
+          <Button className='w-fit hover:bg-slate-800' type="submit">Save Essay</Button>
         </div>
       </form>
       {message && <p>{message}</p>}
@@ -92,7 +95,7 @@ const Essays = () => {
             essays.map((essay, index) => (
               <div key={index} className='w-64 h-80 bg-[#e1e1e1] rounded-lg shadow-lg flex flex-col my-6 transition-transform transform hover:scale-105'>
                 <div className='p-4'>
-                  <h1 className='text-gray-800 font-bold text-lg border-b pb-2 truncate'>{essay.title}</h1>
+                  <h1 className='text-gray-800 font-bold text-lg border-b border-black-3 pb-2 truncate'>{essay.title}</h1>
                 </div>
                 <div className='px-4 flex-1 overflow-hidden '>
                   <p className='text-black-4 text-justify overflow-hidden text-ellipsis'>{essay.text}</p>
@@ -106,7 +109,7 @@ const Essays = () => {
               </div>
             ))
           ) : (
-            <p>No essays saved yet.</p>
+            <p className='text-white-1 font-semibold pl-0.5 pt-5'>No essays saved yet.</p>
           )}
         </div>
       </div>

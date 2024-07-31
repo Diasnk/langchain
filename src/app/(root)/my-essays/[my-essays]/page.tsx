@@ -5,6 +5,7 @@ import { useEffect, useState } from "react"
 import { fetchEssays, updateEssayAction } from "@/lib/actions/actions"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
+import MobileNav from "@/app/components/MobileNav"
 
 export default function Essay() {
   const pathname = usePathname()
@@ -47,6 +48,9 @@ export default function Essay() {
 
   return (
     <div className="min-h-screen pt-5">
+      <div className="pl-10  md:hidden">
+        <MobileNav />
+      </div>
       {essays.map((essay, index) => (
         essay.id.trim() === (myEssays as string) && (
           <div key={index} className="bg-black p-10 rounded-md shadow-lg">
