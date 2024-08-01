@@ -48,17 +48,17 @@ export default function Essay() {
 
   return (
     <div className="min-h-screen pt-5">
-      <div className="pl-10  md:hidden">
+      <div className="pl-3 md:hidden">
         <MobileNav />
       </div>
       {essays.map((essay, index) => (
         essay.id.trim() === (myEssays as string) && (
-          <div key={index} className="bg-black p-10 rounded-md shadow-lg">
-            <h1 className="text-start font-bold text-3xl text-white-1 pb-6">
+          <div key={index} className="bg-black pt-5 md:pt-10 rounded-md shadow-lg">
+            <h1 className="text-start font-bold text-3xl text-white-1 pl-1 pb-6">
               {essay.title}
             </h1>
             <textarea
-              className="w-full h-80 p-4 text-white bg-[#e1e1e1] rounded-lg border-2 border-gray-600 focus:ring-2 focus:outline-none resize-none"
+              className="w-full h-80 p-4 text-white bg-black-2 text-white-1 rounded-lg border-2 border-gray-600 focus:ring-2 focus:outline-none resize-none"
               value={editableText || essay.text}
               onChange={handleTextChange}
               rows={10}
@@ -77,6 +77,9 @@ export default function Essay() {
                     Cancel
                 </Button>
               </div>
+              <Link href={`/chat/${essay.id}`}>
+                  <Button className="bg-green-700 hover:bg-green-600 mt-4">Chat With AI Specialist</Button>
+              </Link>
             </div>
           </div>
         )

@@ -77,28 +77,29 @@ const Essays = () => {
             value={essayTitle} 
             onChange={(e) => setEssayTitle(e.target.value)} 
             placeholder="Enter your essay's title here..." 
-            className='w-full placeholder:text-black-1 placeholder:italic bg-[#e1e1e1]'        
+            className='w-full text-white-1 placeholder:italic bg-black-2 border-gray-600'        
             />
           <textarea
-            className="w-full p-2 border-2 rounded-md bg-[#e1e1e1] overflow-y-scroll h-20 max-h-40 placeholder:text-black-1 placeholder:italic"
+            className="w-full p-2 border-2 rounded-md bg-black-2 text-white-1 overflow-y-scroll max-h-40 border-gray-600 placeholder:italic "
             placeholder={"Enter your essay here..."}
             value={essayText}
             onChange={(e) => setEssayText(e.target.value)}
+            rows={4}
           ></textarea>
           <Button className='w-fit hover:bg-slate-800' type="submit">Save Essay</Button>
         </div>
       </form>
       {message && <p>{message}</p>}
-      <div className='w-full flex justify-center'>
-        <div className='w-full grid grid-flow-row grid-cols-1 md:grid-cols-3 gap-6'>
+      <div className='w-full flex justify-center '>
+        <div className='w-full grid grid-flow-row grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
           {essays.length > 0 ? (
             essays.map((essay, index) => (
-              <div key={index} className='w-64 h-80 bg-[#e1e1e1] rounded-lg shadow-lg flex flex-col my-6 transition-transform transform hover:scale-105'>
+              <div key={index} className='w-64 h-80 bg-black-2 rounded-lg shadow-lg flex flex-col my-6 transition-transform transform hover:scale-105'>
                 <div className='p-4'>
-                  <h1 className='text-gray-800 font-bold text-lg border-b border-black-3 pb-2 truncate'>{essay.title}</h1>
+                  <h1 className='text-white-1 font-bold text-lg border-b border-white-1 pb-2 truncate'>{essay.title}</h1>
                 </div>
                 <div className='px-4 flex-1 overflow-hidden '>
-                  <p className='text-black-4 text-justify overflow-hidden text-ellipsis'>{essay.text}</p>
+                  <p className='text-slate-300 text-justify overflow-hidden text-ellipsis'>{essay.text}</p>
                 </div>
                 <div className='flex justify-between items-center p-3.5'>
                   <Link href={`/my-essays/${essay.id}`}>

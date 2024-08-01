@@ -59,7 +59,7 @@ const Feedback = () => {
         </h1>
         <form onSubmit={handleSubmit} className="flex flex-col md:flex-row gap-4 md:gap-0 w-full mt-2 mx-auto items-center">
           <textarea
-            className="w-full p-2 border-2 bg-[#e1e1e1] rounded-lg border-gray-600 placeholder:text-black-1 placeholder:italic"
+            className="w-full p-2 border-2 bg-black-2 rounded-lg border-gray-600 text-white-1 placeholder:italic "
             placeholder={"Enter your essay here..."}
             value={input}
             onChange={handleInputChange}
