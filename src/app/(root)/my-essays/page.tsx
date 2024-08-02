@@ -86,6 +86,7 @@ const Essays = () => {
             onChange={(e) => setEssayText(e.target.value)}
             rows={4}
           ></textarea>
+          
           <Button className='w-fit hover:bg-slate-800' type="submit">Save Essay</Button>
         </div>
       </form>

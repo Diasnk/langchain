@@ -1,7 +1,6 @@
 'use client'
 
 import React, { useRef, useEffect, useState } from 'react'
-import { Input } from "@/components/ui/input2"
 import { Button } from "@/components/ui/button2"
 import { useChat } from "ai/react"
 import ModalWindow from "@/app/components/ModalWindow"
@@ -18,6 +17,7 @@ const Feedback = () => {
 
   const [isOpen, setIsOpen] = useState(false);
   const [feedback, setFeedback] = useState(null);
+  const [userEssay, setUserEssay] = useState('');
 
   const toggleOpen = () => {
     setIsOpen(!isOpen);
@@ -31,7 +31,6 @@ const Feedback = () => {
     }
   }, [messages]);
 
-  // Function to parse JSON safely
   function parseJson(content: any) {
     try {
       return JSON.parse(content);
@@ -40,7 +39,6 @@ const Feedback = () => {
     }
   }
 
-  // Extract the last message from the assistant
   useEffect(() => {
     const lastMessage = messages.length > 0 ? messages[messages.length - 1] : null;
     const parsedFeedback = lastMessage ? parseJson(lastMessage.content) : null;
@@ -50,6 +48,12 @@ const Feedback = () => {
     }
   }, [messages]);
 
+  const handleFormSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setUserEssay(input);
+    handleSubmit(e);
+  };
+
   return (
     <div>
       <div className="w-full flex flex-col justify-center pl-2 md:px-4 md:mx-auto">
@@ -57,7 +61,7 @@ const Feedback = () => {
         <h1 className="text-start mt-10 font-bold text-3xl text-white-1 py-3">
           Put Your Essay Here!
         </h1>
-        <form onSubmit={handleSubmit} className="flex flex-col md:flex-row gap-4 md:gap-0 w-full mt-2 mx-auto items-center">
+        <form onSubmit={handleFormSubmit} className="flex flex-col md:flex-row gap-4 md:gap-0 w-full mt-2 mx-auto items-center">
           <textarea
             className="w-full p-2 border-2 bg-black-2 rounded-lg border-gray-600 text-white-1 placeholder:italic "
             placeholder={"Enter your essay here..."}
@@ -98,6 +102,7 @@ const Feedback = () => {
             <ModalWindow
                 close={toggleOpen}
                 content={feedback}
+                userInput={userEssay}
             />
         )}
       </div>
