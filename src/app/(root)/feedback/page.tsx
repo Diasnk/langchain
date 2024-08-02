@@ -56,7 +56,7 @@ const Feedback = () => {
 
   return (
     <div>
-      <div className="w-full flex flex-col justify-center pl-2 md:px-4 md:mx-auto">
+      <div className="w-full flex flex-col h-full justify-center pl-2 md:px-4 md:mx-auto">
         <MobileNav />
         <h1 className="text-start mt-10 font-bold text-3xl text-white-1 py-3">
           Put Your Essay Here!

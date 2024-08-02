@@ -86,7 +86,7 @@ const ModalWindow = ({ content, close, userInput }: { content: any, close: any, 
 
   
   return (
-    <div className='md:w-3/5 w-5/6 min-h-fit bg-black-1 absolute rounded-lg p-5 z-10 md:top-20 md:-right-48 left-1/2 top-32 transform -translate-x-1/2'>
+    <div className='md:w-3/5 w-5/6 min-h-fit bg-black-1 absolute rounded-lg p-5 z-10 md:top-20 md:-right-48 left-1/2 top-10 transform -translate-x-1/2'>
       <IoMdClose className='text-white-1 w-6 h-6 cursor-pointer absolute right-3 top-3' onClick={close} />
       {
         !isOpen && (
@@ -148,6 +148,7 @@ const ModalWindow = ({ content, close, userInput }: { content: any, close: any, 
             <div key={id}></div>
           ):(
           <div key={id} className='h-fit text-white-1 text-base font-normal'>
+            <h1 className='text-slate-500 text-sm py-2'>Always remeber that AI will not write you the best essay. It will help YOU to write one!</h1>
             {content}
           </div>
           )))}
