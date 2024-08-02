@@ -1,6 +1,7 @@
 'use client'
 
 import {Chat} from '@/app/components/chat'
+import MobileNav from '@/app/components/MobileNav'
 import { fetchEssays } from '@/lib/actions/actions'
 import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
@@ -25,7 +26,10 @@ const Consult = () => {
     loadEssays();
   }, []);
   return (
-    <div className='pt-3'>
+    <div className='pt-1'>
+      <div className=''>
+        <MobileNav/>
+      </div>
       {
         essays.map((essay, index) => (
           essay.id.trim() === (myEssays as string) && (

@@ -37,7 +37,6 @@ const ModalWindow = ({ content, close, userInput }: { content: any, close: any, 
   const [progress, setProgress] = useState(0);
 
 
-
   useEffect(() => {
     const animationDuration = 1000;
     const steps = 100;
@@ -146,7 +145,7 @@ const ModalWindow = ({ content, close, userInput }: { content: any, close: any, 
       <ul ref={chatParent}>
         {isOpen && messages.map(({ content, id, role }) => (
           role === 'user' ? (
-            <></>
+            <div key={id}></div>
           ):(
           <div key={id} className='h-fit text-white-1 text-base font-normal'>
             {content}

@@ -47,8 +47,8 @@ export default function Essay() {
   };
 
   return (
-    <div className="min-h-screen pt-5">
-      <div className="pl-3 md:hidden">
+    <div className="min-h-screen pt-2">
+      <div className="pl-3">
         <MobileNav />
       </div>
       {essays.map((essay, index) => (

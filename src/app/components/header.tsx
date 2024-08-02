@@ -35,14 +35,22 @@ export default function Header() {
                     <SheetHeader>
                       <SheetTitle><div className='text-2xl font-bold p-5'>Where do you want to go?</div></SheetTitle>
                       <SheetDescription>
+					  	<SignedOut>
+                          <div className='text-xl font-semibold p-5'>
+                            <SignUpButton></SignUpButton>
+                          </div>
+                        </SignedOut>
                         <Link href="/">
                           <div className='text-xl font-semibold p-5'>Home</div>
                         </Link>
-                        <Link href="/my-essays">
-                          <div className='text-xl font-semibold p-5'>My Essays</div>
-                        </Link>
                         <Link href="/feedback">
                           <div className='text-xl font-semibold p-5'>Feedback</div>
+                        </Link>
+						<Link href="/tutorial">
+                          <h1 className='text-xl font-semibold p-5'>Tutorial</h1>
+                        </Link>
+                        <Link href="/my-essays">
+                          <div className='text-xl font-semibold p-5'>My Essays</div>
                         </Link>
                       </SheetDescription>
                     </SheetHeader>

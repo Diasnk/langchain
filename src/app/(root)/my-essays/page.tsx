@@ -90,12 +90,12 @@ const Essays = () => {
           <Button className='w-fit hover:bg-slate-800' type="submit">Save Essay</Button>
         </div>
       </form>
-      {message && <p>{message}</p>}
+      {message && <p className='text-white-1'>{message}</p>}
       <div className='w-full flex justify-center '>
         <div className='w-full grid grid-flow-row grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
           {essays.length > 0 ? (
             essays.map((essay, index) => (
-              <div key={index} className='w-64 h-80 bg-black-2 rounded-lg shadow-lg flex flex-col my-6 transition-transform transform hover:scale-105'>
+              <div key={index} className='w-64 h-80 bg-black-2 rounded-lg shadow-lg flex flex-col my-6 transition-transform transform hover:scale-105 mx-auto'>
                 <div className='p-4'>
                   <h1 className='text-white-1 font-bold text-lg border-b border-white-1 pb-2 truncate'>{essay.title}</h1>
                 </div>
