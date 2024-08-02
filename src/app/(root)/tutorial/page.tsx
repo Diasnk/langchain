@@ -28,8 +28,8 @@ const Tutorial = () => {
       <div className="w-full justify-center h-screen bg-black grid md:grid-cols-2">
           {
               data.map(({content, description, id, path}) => (
-                <Link href={path}>
-                  <div key={id} className='w-80 h-96 bg-black-2 rounded-lg shadow-lg flex flex-col my-6 transition-transform transform hover:scale-105 mx-auto'>
+                <Link key={id} href={path}>
+                  <div  className='w-80 h-96 bg-black-2 rounded-lg shadow-lg flex flex-col my-6 transition-transform transform hover:scale-105 mx-auto'>
                     <div className='p-4'>
                       <h1 className='text-white-1 font-bold text-lg border-b border-white-1 pb-2 truncate'>{content}</h1>
                     </div>
