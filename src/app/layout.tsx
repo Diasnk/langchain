@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   title: "Jeremy Counsellor",
   description: "Get Detailed Feedback on Your Essay",
   icons:{
-    icon:'/icons/logo.svg'
+    icon:'/nlogo.png'
   }
 };
 
