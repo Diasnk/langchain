@@ -23,7 +23,7 @@ const Tutorial = () => {
   return (
     <div>
       <h1 className="font-bold text-white-1 text-3xl p-10">
-        Here Will Be Two Structure Lessons
+        Two Main Structures for Writing an Essay
       </h1>
       <div className="w-full justify-center h-screen bg-black grid md:grid-cols-2">
           {
