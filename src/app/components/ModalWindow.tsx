@@ -58,8 +58,8 @@ const ModalWindow = ({ content, close, userInput }: { content: any, close: any, 
 
   const getColor = (score: number) => {
     if (score <= 20) return '#ff4d4d';
-    if (score <= 50) return '#ffbb33';
-    if (score <= 75) return '#ffeb3b';
+    if (score <= 45) return '#ffbb33';
+    if (score <= 70) return '#ffeb3b';
     return '#4caf50';
   };
 
